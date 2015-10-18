@@ -1,0 +1,25 @@
+//Question: http://codility.com/demo/take-sample-test/tape_equilibrium
+
+class Solution {
+    public int solution(int[] A) {
+        // write your code in Java SE 8
+         if(A.length == 2) {
+            return Math.abs(A[0] - A[1]);
+        } else {
+            int head = A[0];
+            int tail=0;
+            for(int i=1; i < A.length; i++) {
+                tail += A[i];
+            }
+            int min_diff = Math.abs(head-tail);
+            for(int i=1; i < A.length-1; i++){
+               head += A[i];
+               tail -= A[i];
+               if(Math.abs(head-tail) < min_diff) {
+                   min_diff = Math.abs(head-tail);
+               }
+            }
+            return min_diff;
+        }
+    }
+}
